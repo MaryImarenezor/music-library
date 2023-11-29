@@ -38,12 +38,12 @@ function GalleryItem(props) {
             <div style={detailStyle}>
                 <h2>{props.item.trackName}</h2>
                 <h3>
-                    <Link to={"/artist/${item.artistId}"}>
+                    <Link to={"/artist/${props.item.artistID}"}>
                         {props.item.artistName}
                     </Link>
                 </h3>
                 <h3>
-                    <Link to={"/album/${item.collectionId}"}>
+                    <Link to={"/album/${props.item.collectionID}"}>
                         {props.item.collectionName}
                     </Link>
                 </h3>
