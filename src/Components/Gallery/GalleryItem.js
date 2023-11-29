@@ -5,7 +5,7 @@ function GalleryItem() {
     const [view, setView] = useState(false)
     
     return (
-        <div onclick={(e) => setView(!view)} style={{display: 'inline-block'}}>
+        <div onClick={(e) => setView(!view)} style={{display: 'inline-block'}}>
             <p>Gallery Item</p>
         </div>
     )
