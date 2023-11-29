@@ -10,12 +10,15 @@ function App() {
 
 
   useEffect (() => {
-    const fetchData = async () => {
-      const url = "https://itunes.apple.com/search?term=the%20grateful%20dead"
+  if(search) {
+      const fetchData = async () => {
+      const url = encodeURI('https://itunes.apple.com/search?term=${search}')
       const response = await fetch(url)
       const data = await response.json()
+      //removable
+      console.log(data)
       
-      if(data.results) {
+      if(data.results.length > 0) {
         setData(data.results)
       } else {
         setData([])
@@ -24,13 +27,22 @@ function App() {
     }
 
     fetchData()
-  }, [search])
+  }
+}, [search])
+
   
+  //when this fires, the data is fetched
+  const handleSearch = (e, term) => {
+    e.preventDefault()
+    setSearch(term)
+  }
+
   return (
+    //passing handleSearch and data as a prompt
     <div>
-      <SearchBar />
+      <SearchBar handleSearch={handleSearch} />
       {message}
-      <Gallery />
+      <Gallery data={data}/>
     </div>
   )
 }
