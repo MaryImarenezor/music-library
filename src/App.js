@@ -15,7 +15,7 @@ function App() {
   useEffect (() => {
   if(search) {
       const fetchData = async () => {
-      const url = encodeURI('https://itunes.apple.com/search?term=${search}')
+      const url = encodeURI(`https://itunes.apple.com/search?term=${search}`)
       const response = await fetch(url)
       const data = await response.json()
       //removable
@@ -52,7 +52,7 @@ function App() {
               <Gallery data={data}/>
             </>
           } />
-          <Route path="/albumn/:id" element={<AlbumView />} />
+          <Route path="/album/:id" element={<AlbumView />} />
           <Route path="/artist/:id" element={<ArtistView />} />
         </Routes>
       </Router>
